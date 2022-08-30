@@ -1,0 +1,74 @@
+{% extends "admin_panel/admin_home.html" %}
+{% block body %}
+<div class="p-4">
+    <div class="col-7">
+        <div class="h3"><h3 style="color: #6d8e91;">DFL Release And Supply</h3></div><br>
+    </div>
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Unit Name : {{ myfill.form.unit_name }}</div>
+            <div class="col">Lot No :{{ myfill.form.SSPC_Lot_No_Assigned }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'mod4' %}">Refresh</a></button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'export4' %}?{{request.GET.urlencode}}">Export ( .xls)</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="ml-2 mr-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+        
+
+            <thead style="color:#6d8e91; background-color: #d9e3dd;">
+                <tr>
+                    <th scope="col">SSPC Lot No</th>
+                    <th scope="col">Date of Releae</th>
+                    <th scope="col">DFLs Released (kg)</th>
+                    <th scope="col">Preservation Loss (Kg)</th>
+                    <th scope="col">Winnowing Loss (Kg)</th>
+                    <th scope="col">DFLs Packed for Supply (Kg)</th>
+                    <th scope="col">DFLs Packed for Supply (No.)</th>
+                    <th scope="col">Date of Supply</th>
+                    <th scope="col">Supplied to</th>
+                    <th scope="col">No.of DFLs</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Cash Bill/ Invoice No. & Date</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">Processing Loss (Gram) </th>
+                    <th scope="col">No.of DFLs for Write-Off (Want of Demand)</th>
+                    <th scope="col"></th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody style="overflow-x:auto;">
+                {% for i in data %}
+                <tr>
+                    <td>{{ i.SSPC_Lot_No_Assigned }}</td>
+                    <td>{{ i.Date_of_Release }}</td>
+                    <td>{{ i.DFLs_Released_kg }}</td>
+                    <td>{{ i.Preservation_Loss_Kg }}</td>
+                    <td>{{ i.Winnowing_Loss_Kg }}</td>
+                    <td>{{ i.DFLs_Packed_for_Supply_Kg }}</td>
+                    <td>{{ i.DFLs_Packed_for_Supply_No }}</td>
+                    <td>{{ i.Date_of_Supply }}</td>
+                    <td>{{ i.Supplied_to }}</td>
+                    <td>{{ i.No_of_DFLs }}</td>
+                    <td>{{ i.Amount }}</td>
+                    <td>{{ i.Cash_Bill_Invoice_No_Date }}</td>
+                    <td>{{ i.Remarks }}</td>
+                    <td>{{ i.Processing_loss }}</td>
+                    <td>{{ i.No_of_DFLs_for_write_off }}</td>
+                    <td><a href="{% url 'mod4delete' i.id %}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,14 @@
+{% extends "admin_panel/admin_home.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div style="background-color: aliceblue;" class="container-fluid p-4">
+	<form method="post">
+		{% csrf_token %}
+		<div class="container">
+			{{ form|crispy }}
+		
+
+		<button type="submit" class="btn btn-primary btn-block btn1">Submit</button></div>
+	</form>
+</div>
+{% endblock body %}

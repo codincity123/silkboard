@@ -1,0 +1,59 @@
+{% extends "admin_panel/admin_home.html" %}
+{% block body %}
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Unit Name : {{ myfill.form.unit_name }}</div>
+            <div class="col">Lot No :{{ myfill.form.lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'mod5' %}">Refresh</a></button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'export5' %}?{{request.GET.urlencode}}">Export ( .xls)</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="ml-2 mr-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Lot No</th>
+                    <th scope="col">Cold storage name</th>
+                    <th scope="col">Hybrid preserved</th>
+                    <th scope="col">Qty dfls preserved</th>
+                    <th scope="col">No of dfls preserved</th>
+                    <th scope="col">Weight loss before consig.</th>
+                    <th scope="col">Preservation Schedule</th>
+                    <th scope="col">Reference letter</th>
+                    <th scope="col">Weight loss after consig.</th>
+                    <th scope="col">Dfls available for supply</th>
+                    <th scope="col"></th>
+                    
+                </tr>
+            </thead>
+            <tbody style="overflow-x:auto;">
+                {% for i in data %}
+                <tr>
+                    <td>{{ i.lot_no }}</td>
+                    <td>{{ i.cold_storage_name }}</td>
+                    <td>{{ i.hybrid_preserved }}</td>
+                    <td>{{ i.qty_of_dfls_preserved }}</td>
+                    <td>{{ i.no_of_dfls_preserved }}</td>
+                    <td>{{ i.weight_loss_before_consignment }}</td>
+                    <td>{{ i.preservation_schedule }}</td>
+                    <td>{{ i.reference_letter }}</td>
+                    <td>{{ i.weight_loss_after_consignment }}</td>
+                    <td>{{ i.dfls_available_for_supply }}</td>
+                    <td><a href="{% url 'mod5delete' i.lot_no %}" class="btn btn-danger">Delete</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

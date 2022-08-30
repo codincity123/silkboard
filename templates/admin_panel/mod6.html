@@ -1,0 +1,60 @@
+{% extends "admin_panel/admin_home.html" %}
+{% block body %}
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Unit Name : {{ myfill.form.unit_name }}</div>
+            <div class="col">Lot No :{{ myfill.form.lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'mod6' %}">Refresh</a></button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'export6' %}?{{request.GET.urlencode}}">Export ( .xls)</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="ml-2 mr-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Lot No</th>
+                    <th scope="col">Supplied to</th>
+                    <th scope="col">Date of release</th>
+                    <th scope="col">No of dfls supplied</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Invoice no cash/bill/date</th>
+                    <th scope="col">Qty of Dfls for writeoff</th>
+                    <th scope="col">Reason for Write-off</th>
+                    <th scope="col">Approval reference</th>
+                    <th scope="col">Qty dfls Approved for Write-off</th>
+                    <th scope="col"></th>
+                   
+                    
+                </tr>
+            </thead>
+            <tbody style="overflow-x:auto;">
+                {% for i in data %}
+                <tr>
+                    <td>{{ i.lot_no }}</td>
+                    <td>{{ i.supplied_to }}</td>
+                    <td>{{ i.date_of_release }}</td>
+                    <td>{{ i.no_of_dfls_supplied }}</td>
+                    <td>{{ i.amount }}</td>
+                    <td>{{ i.invoice_no_cash_bill_date }}</td>
+                    <td>{{ i.qty_of_dfls_requested_for_write_off }}</td>
+                    <td>{{ i.reason_for_writeoff }}</td>
+                    <td>{{ i.approval_reference }}</td>
+                    <td>{{ i.qty_of_dfls_approved_for_writeoff }}</td>
+                    <td><a href="{% url 'mod6delete' i.lot_no %}" class="btn btn-danger">Delete</a></td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

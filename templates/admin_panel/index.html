@@ -1,0 +1,85 @@
+{% extends "admin_panel/admin_home.html" %}
+{% block body %}
+<div class="p-4">
+    <div class="col-7">
+        <div class="h3"><h3 style="color: #6d8e91;">Seed Crop Performance</h3></div><br>
+    </div>
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Unit Name : {{ myfill.form.unit_name }}</div>
+            <div class="col">Lot No :{{ myfill.form.p1_seed_lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'admin_home' %}">Refresh</a></button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'export' %}?{{request.GET.urlencode}}">Export ( .xls)</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="ml-2 mr-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead style="color:#6d8e91; background-color: #d9e3dd;">
+                <tr>
+                    <th scope="col">Unit Name</th>
+                    <th scope="col">Name Of ASR</th>
+                    <th scope="col">Certificate No. Of ASR</th>
+                    <th scope="col">P1 Seed Lot No.</th>
+                    <th scope="col">P1 Race</th>
+                    <th scope="col">No. Of DFLs Brushed</th>
+                    <th scope="col">Date Of Hatching</th>
+                    <th scope="col">Date Of Spinning</th>
+                    <th scope="col">Hatching</th>
+                    <th scope="col"> Seed Crop Inspected By</th>
+            
+
+                    <th scope="col">Seed Crop Remarks</th>
+                    <th scope="col">Date Of Cocoon Assesment</th>
+                    <th scope="col">Cocoon Yield Per 100 DFLS</th>
+                    <th scope="col">No. of Cocoon Per Kg</th>
+                    <th scope="col">No. Of Good Cocoon Per Kg</th>
+                    <th scope="col">No. Of Defective Cocoon Per Kg</th>
+                    <th scope="col">No. of Male Cocoon Per Kg</th>
+                    <th scope="col">No. of Female Cocoon Per Kg</th>
+                    <th scope="col">Pupation</th>
+                    <th scope="col">Fitness Of Seed Cocoon Per Kg</th>
+                    <th scope="col"></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                
+                    <td>{{ i.unit_name }}</td>
+                    <td>{{ i.Name_of_the_Adopted_Seed_Rearer }}</td>
+                    <td>{{ i.Reg_Certificate_No_of_ASR }}</td>
+                    <td>{{ i.p1_seed_lot_no }}</td>
+                    <td>{{ i.p1_race }}</td>
+                    <td>{{ i.no_of_dfls_brushed }}</td>
+                    <td>{{ i.date_of_hatching }}</td>
+                    <td>{{ i.date_of_spinning }}</td>
+                    <td>{{ i.hatching }}</td>
+                    <td>{{ i.seed_crop_inspected_by }}</td>
+                    <td>{{ i.seed_crop_remarks }}</td>
+                    <td>{{ i.date_of_cocoon_assesment }}</td>
+                    <td>{{ i.cocoon_yield_per_100dfls }}</td>
+                    <td>{{ i.no_of_cocoon_per_kg }}</td>
+                    <td>{{ i.no_of_good_cocoon_per_kg }}</td>
+                    <td>{{ i.no_of_defective_cocoon_per_kg }}</td>
+                    <td>{{ i.no_of_male_cocoon_per_kg }}</td>
+                    <td>{{ i.no_of_female_cocoon_per_kg }}</td>
+                    <td>{{ i.pupation }}</td>
+                    <td>{{ i.fitness_of_seed_cocoon_per_kg }}</td>
+                    <td><a href="{% url 'mod1delete' i.p1_seed_lot_no %}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

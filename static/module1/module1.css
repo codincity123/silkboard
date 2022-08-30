@@ -1,0 +1,16 @@
+
+
+
+.form-container{
+	position: absolute;
+	top: 8vh;
+	background:#fff;
+	padding: 30px;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px 0px #16a085;
+
+}
+
+.btn1{
+	background-color: #16a085;
+}

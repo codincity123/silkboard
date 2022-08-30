@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Module 1
+{% endblock title %}
+{% block body %}
+<section class="container-fluid">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-4">
+			<h3 style="font-family: cursive;"></h3>
+			<form method="post">
+				{% csrf_token %}
+				 <h5>Update</h5>
+				 {{ form.as_p }}
+				  <button type="submit" class="btn btn-primary btn-block btn1">Submit</button>
+				</form>
+		</section>
+	</section>
+</section>
+
+
+<script>
+	var validate_procured = function () {
+		var e = document.getElementById('field5');
+		var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+
+
+		e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."), 4)) : t;
+		var x = document.getElementById('field4').value;
+		var y = e.value;
+		var z = x * y;
+		document.getElementById('field6').value = Math.round(z);
+
+
+	}
+
+	function pupation_price() {
+
+		var obj = { '80': 950, '81': 953, '82': 956, '83': 959, '84': 962, '85': 965, '86': '968', '87': 971, '88': 974, '89': 977, '90': 980, '91': 983, '92': 986, '93': 989, '94': 992, '95': 995, '96-100': 1000 }
+		var x = document.getElementById('pupation').value;
+		//var qty_of_seed_cocoon_procured=document.getElementById('qty_of_seed_cocoon_procured').value;
+		document.getElementById('cocoon_price').value = obj[x];
+		//var cocoon_price = document.getElementById('cocoon_price').value=obj[x];
+		//var total = qty_of_seed_cocoon_procured*cocoon_price
+		//document.getElementById('txt3').value=z;
+
+	}
+	function multi(e) {
+		var x = document.getElementById('field5').value;
+		var y = document.getElementById('cocoon_price').value;
+		var z = x * y;
+		document.getElementById('total').value = Math.round(z);
+	}
+	var validate_actual = function() {
+      	var e=document.getElementById('diverted_seed');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+		  var x = document.getElementById('field5').value;
+		  var y=e.value;
+		  var z=x-y;
+		  document.getElementById('processing').value = z.toFixed(3);
+
+		  
+      }
+	  function validate_field14(e) {
+		var x = document.getElementById('field4').value;
+		var y = document.getElementById('diverted_seed').value;
+		var z = x * y;
+		document.getElementById('diverted_units').value =Math.round(z);
+	}
+	function validate_field16(e) {
+		var x = document.getElementById('field6').value;
+		var y = document.getElementById('diverted_units').value;
+		var z = x - y;
+		document.getElementById('processing_no').value =Math.round(z);
+	}
+
+	var validate_dfls_produced = function() {
+      	var e=document.getElementById('mod3_f3');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+		  var y=(e.value*1000)/0.36;
+		  document.getElementById('mod3_f4').value=Math.round(y);
+      }
+	  var validate_treated = function() {
+      	var e=document.getElementById('mod3_f5');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+		  var y=(e.value*1000)/0.36;
+		  document.getElementById('mod3_f6').value=Math.round(y);
+		  var a=document.getElementById('mod3_f3').value;
+		  var b=document.getElementById('mod3_f5').value;
+		  var c=a-b;
+		  document.getElementById('mod3_f7').value=c.toFixed(3);
+		  var d=document.getElementById('mod3_f4').value;
+		  var f=d-y;
+		  document.getElementById('mod3_f8').value=Math.round(f);
+      }
+
+
+	  var validate_pierced = function() {
+      	var e=document.getElementById('mod3_f12');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var validate_price = function() {
+      	var e=document.getElementById('mod3_f13');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),3)) : t;
+      }
+	  var validate_price_if = function() {
+      	var e=document.getElementById('mod3_f14');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),3)) : t;
+      }
+
+</script>
+{% endblock body %}

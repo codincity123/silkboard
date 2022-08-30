@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Details
+{% endblock title %}
+{% block body %}
+{% include 'messages.html' %}
+<div class="row m-3">
+    <div class="col-7">
+        <div class="h3" style="color: #4c6f74;">Seed Cocoon Purchase</div>
+    </div>
+    <div class="col">
+        <a href="{% url 'mod22' %}"><button type="button" style="width: 150px;" class="btn btn-info" data-toggle="modal"
+                data-target="">
+                Add data
+            </button></a>
+    </div>
+</div>
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">SSPC Lot No :{{ myfill.form.SSPC_Lot_No_Assigned }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;"
+                        href="{% url 'moddata2' %}">Refresh</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="row">
+    <div class="col">
+        <div class="p-2">
+            <section class="container-fluid ">
+                <section class="row justify-content-center">
+                    <table class="table table-striped table-responsive">
+                        <thead style="color:#6d8e91; background-color: #d9e3dd;">
+                            <tr>
+                                <th scope="col">Seed Cocoon Purchased Or Received From</th>
+                                <th scope="col">Rgistration Certificate No.</th>
+                                <th scope="col">Date Of Seed Cocoon Procurement</th>
+                                <th scope="col">Actual No. Of Cocoon Per Kg</th>
+                                <th scope="col">Total Qty. Of Seed Cocoons Procured By Weight(kg)</th>
+                                <th scope="col">Total Qty. Of Seed Cocoons Procured By Number</th>
+                                <th scope="col">Pupation (%)</th>
+                                <th scope="col">Seed Cocoon Price Per Kg</th>
+                                <th scope="col">Total Amount paid to ASR Per Unit (RS)</th>
+                                <th scope="col"> Transaction ID</th>
+                                <th scope="col">SSPC Lot No. Assigned</th>
+                                <!-- <th scope="col">Date Of Cocoon Assesment</th> -->
+                                <th scope="col">Seed Cocoon Diverted to Other Unit</th>
+                                <th scope="col">Actual Qty Of Seed Cocoons Diverted To Units (kg)</th>
+                                <th scope="col">Actual Qty Of Seed Cocoons Diverted To Units (No.)</th>
+                                <th scope="col">Actual Qty Of Seed Cocoons Used For Processing (Kg)</th>
+                                <th scope="col">Actual Qty Of Seed Cocoons Used For Processing (No.)</th>
+                                
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                            
+                                <td>{{ i.Seed_Cocoons_Purchased_or_Received_From }}</td>
+                                <td>{{ i.Reg_Certificate_No }}</td>
+                                <td>{{ i.date_of_seed_cocoon_procurement }}</td>
+                                <td>{{ i.actual_no_of_cocoon_per_kg }}</td>
+                                <td>{{ i.Total_Qty_of_Seed_Cocoons_Procured_by_weight_kg }}</td>
+                                <td>{{ i.Total_Qty_of_Seed_Cocoons_Procured_by_number }}</td>
+                                <td>{{ i.pupation_perc }}</td>
+                                <td>{{ i.seed_cocoon_price_per_kg }}</td>
+                                <td>{{ i.Total_Amount_Paid_to_ASR_per_Unit_rs }}</td>
+                                <td>{{ i.Transaction_ID }}</td>
+                                <td>{{ i.SSPC_Lot_No_Assigned }}</td>
+                                <td>{{ i.Seed_Cocoons_Diverted_to_Other_Unit }}</td>
+                                <td>{{ i.Actual_Qty_of_Seed_Cocoons_Diverted_to_Units_kg }}</td>
+                                <td>{{ i.Actual_Qty_of_Seed_Cocoons_Diverted_to_Units_no }}</td>
+                                <td>{{ i.Actual_Qty_of_Seed_Cocoons_used_for_processing_kg }}</td>
+                                <td>{{ i.Actual_Qty_of_Seed_Cocoons_used_for_processing_no }}</td>
+                                
+                                <td><a href="{% url 'update2' i.SSPC_Lot_No_Assigned %}"><button type="button"
+                                    style="width: 150px;" class="btn btn-info" data-toggle="modal"
+                                    data-target="">
+                                    Update
+                                </button></a></td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+

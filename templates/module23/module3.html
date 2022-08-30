@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module23/module2.css' %}">
+{% endblock links %}
+{% block title %}
+Module 3
+{% endblock title %}
+{% block body %}
+<section class="container-fluid">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-6">
+			<h3 class="pt-3" style="color:#4c6f74 ;">DFL Production & Preservation</h3><br>
+
+			<form class="shadow-lg p-3 mb-5 bg-white rounded" method="post">
+				{% csrf_token %}
+				{{ form|crispy}}
+
+				<button type="submit" class="btn btn-info btn-block btn1">Submit</button>
+			</form>
+		</section>
+	</section>
+</section>
+<script>
+var validate_dfls_produced = function() {
+      	var e=document.getElementById('mod3_f3');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+		  var y=(e.value*1000)/0.36;
+		  document.getElementById('mod3_f4').value=Math.round(y);
+      }
+	  var validate_treated = function() {
+      	var e=document.getElementById('mod3_f5');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+		  var y=(e.value*1000)/0.36;
+		  document.getElementById('mod3_f6').value=Math.round(y);
+		  var a=document.getElementById('mod3_f3').value;
+		  var b=document.getElementById('mod3_f5').value;
+		  var c=a-b;
+		  document.getElementById('mod3_f7').value=c.toFixed(3);
+		  var d=document.getElementById('mod3_f4').value;
+		  var f=d-y;
+		  document.getElementById('mod3_f8').value=Math.round(f);
+      }
+
+
+	  var validate_pierced = function() {
+      	var e=document.getElementById('mod3_f12');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var validate_price = function() {
+      	var e=document.getElementById('mod3_f13');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),3)) : t;
+      }
+	  var validate_price_if = function() {
+      	var e=document.getElementById('mod3_f14');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),3)) : t;
+      }
+</script>
+{% endblock body %}

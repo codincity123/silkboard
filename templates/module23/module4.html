@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module23/module4.css' %}">
+{% endblock links %}
+{% block title %}
+Module 4
+{% endblock title %}
+{% block body %}
+<section class="container-fluid ">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-6">
+			<h3 class="pt-3" style="color: #4c6f74;">DFL Release & Supply</h3><br>
+
+			<form class="shadow-lg p-3 mb-5 bg-white rounded" method="post">
+				{% csrf_token %}
+				{{ form|crispy }}
+
+				<button type="submit" class="btn btn-info btn-block btn1">Submit</button>
+			</form>
+		</section>
+	</section>
+</section>
+
+<script>
+	var DFLs_Released = function() {
+      	var e=document.getElementById('mod4_f3');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var Preservation_Loss = function() {
+      	var e=document.getElementById('mod4_f4');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var Winnowing_Loss = function() {
+      	var e=document.getElementById('mod4_f5');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var DFLs_Packed_for_Supply = function() {
+      	var e=document.getElementById('mod4_f6');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  var Processing_gm = function() {
+      	var e=document.getElementById('mod4_f15');
+          var t = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+          
+
+          e.value = (t.indexOf(".") >= 0) ? (t.substr(0, t.indexOf(".")) + t.substr(t.indexOf("."),4)) : t;
+      }
+	  
+</script>
+
+{% endblock body %}

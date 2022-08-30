@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Details
+{% endblock title %}
+{% block body %}
+{% include 'messages.html' %}
+<div class="row m-3">
+    <div class="col-7">
+        <div><h3 style="color: #4c6f74;">DFL Production & Preservation</h3></div>
+    </div>
+    <div class="col">
+        <a href="{% url 'mod33' %}"><button type="button" style="width: 150px;" class="btn btn-info"
+                data-toggle="modal" data-target="">
+                Add data
+            </button></a>
+    </div>
+</div>
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">SSPC Lot No :{{ myfill.form.SSPC_Lot_No_Assigned }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;"
+                        href="{% url 'moddata3' %}">Refresh</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="row">
+    <div class="col">
+        <div class="p-2">
+            <section class="container-fluid ">
+                <section class="row justify-content-center">
+                    <table class="table table-striped table-responsive">
+                        <thead style="color:#6d8e91; background-color: #d9e3dd;" >
+                            <tr>
+                                <th scope="col">SSPC Lot No Assigned </th>
+                                <th scope="col">Combination</th>
+                                <th scope="col">Qty.of DFLs Produced - by Weight (Kg)</th>
+                                <th scope="col">Qty.of DFLs Produced - by Number</th>
+                                <th scope="col">Qty.of DFLs Treated - by Weight (kg)</th>
+                                <th scope="col">Qty.of DFLs Treated - by Number</th>
+                                <th scope="col">Qty. of Hibernated DFLs Preserved - by Weight (kg)</th>
+                                <th scope="col">Qty. of Hibernated DFLs Preserved - by Number</th>
+                                <th scope="col">DFLs Preserved at (CSP Name)</th>
+                                <th scope="col">Preservation Schedule</th>
+                                <th scope="col">Date of Preservation at Cold Storage</th>
+                                <th scope="col">Qty. of Pierced Cocoons Obtained (Kg)</th>
+                                <th scope="col">Sale Proceeds from Pierced Cocoons (Rs)</th>
+                                <th scope="col">Sale Proceeds from Others, if any (Rs)</th>
+                                <th scope="col"></th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody style="overflow-x:auto;">
+                            {% for i in data %}
+                            <tr>
+                                <td>{{ i.SSPC_Lot_No_Assigned }}</td>
+                                <td>{{ i.Combination }}</td>
+                                <td>{{ i.Qty_of_DFLs_Produced_by_Weight_kg }}</td>
+                                <td>{{ i.Qty_of_DFLs_Produced_by_no }}</td>
+                                <td>{{ i.Qty_of_DFLs_treated_by_Weight_kg }}</td>
+                                <td>{{ i.Qty_of_DFLs_treated_by_no }}</td>
+                                <td>{{ i.Qty_of_Hibernated_DFLs_Preserved_by_Weight_kg }}</td>
+                                <td>{{ i.Qty_of_Hibernated_DFLs_Preserved_by_no }}</td>
+                                <td>{{ i.DFLs_Preserved_at_CSP_Name }}</td>
+                                
+                                <td>{{ i.Preservation_Schedule }}</td>
+                                <td>{{ i.Date_of_Preservation_at_Cold_Storage }}</td>
+                                <td>{{ i.Qty_of_Pierced_Cocoons_Obtained_Kg }}</td>
+                                <td>{{ i.Sale_Proceeds_from_Pierced_Cocoons_Rs }}</td>
+                                <td>{{ i.Sale_Proceeds_from_Others_if_any_Rs }}</td>
+                                
+                                <td><a href="{% url 'update3' i.SSPC_Lot_No_Assigned %}" ><button type="button" style="width: 150px;" class="btn btn-info" 
+                                    data-toggle="modal" data-target="">
+                                    Update
+                                </button></a></td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

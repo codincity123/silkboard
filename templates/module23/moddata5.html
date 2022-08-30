@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Details
+{% endblock title %}
+{% block body %}
+{% include 'messages.html' %}
+<div class="row m-3">
+    <div class="col-7">
+        <div class="h3">Dfls Preservation And Supply</div>
+    </div>
+    <div class="col">
+        <a href="{% url 'mod55' %}"><button type="button" style="width: 150px;" class="btn btn-info"
+                data-toggle="modal" data-target="">
+                Add data
+            </button></a>
+    </div>
+</div>
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Lot No :{{ myfill.form.lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;"
+                        href="{% url 'moddata5' %}">Refresh</a></button></div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="p-2">
+            <section class="container-fluid table-responsive">
+                <section class="row justify-content-center">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Lot No</th>
+                                <th scope="col">Cold storage name</th>
+                                <th scope="col">Hybrid preserved</th>
+                                <th scope="col">Qty dfls preserved</th>
+                                <th scope="col">No of dfls preserved</th>
+                                <th scope="col">Weight loss before consig.</th>
+                                <th scope="col">Preservation Schedule</th>
+                                <th scope="col">Reference letter</th>
+                                <th scope="col">Weight loss after consig.</th>
+                                <th scope="col">Dfls available for supply</th>
+                                <th scope="col"></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody style="overflow-x:auto;">
+                            {% for i in data %}
+                            <tr>
+                                <td>{{ i.lot_no }}</td>
+                                <td>{{ i.cold_storage_name }}</td>
+                                <td>{{ i.hybrid_preserved }}</td>
+                                <td>{{ i.qty_of_dfls_preserved }}</td>
+                                <td>{{ i.no_of_dfls_preserved }}</td>
+                                <td>{{ i.weight_loss_before_consignment }}</td>
+                                <td>{{ i.preservation_schedule }}</td>
+                                <td>{{ i.reference_letter }}</td>
+                                <td>{{ i.weight_loss_after_consignment }}</td>
+                                <td>{{ i.dfls_available_for_supply }}</td>
+                                <td><a href="{% url 'update5' i.lot_no %}" ><button type="button" style="width: 150px;" class="btn btn-info" 
+                                    data-toggle="modal" data-target="">
+                                    Update
+                                </button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock body %}

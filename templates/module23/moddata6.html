@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Details
+{% endblock title %}
+{% block body %}
+{% include 'messages.html' %}
+<div class="row m-3">
+    <div class="col-7">
+        <div class="h3">Dfls Supply</div>
+    </div>
+    <div class="col">
+        <a href="{% url 'mod66' %}"><button type="button" style="width: 150px;" class="btn btn-info"
+                data-toggle="modal" data-target="">
+                Add data
+            </button></a>
+    </div>
+</div>
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Lot No :{{ myfill.form.lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;"
+                        href="{% url 'moddata6' %}">Refresh</a></button></div>
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="p-2">
+            <section class="container-fluid table-responsive">
+                <section class="row justify-content-center">
+                    <table class="table table-striped">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Lot No</th>
+                                <th scope="col">Supplied to</th>
+                                <th scope="col">Date of release</th>
+                                <th scope="col">No of dfls supplied</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Invoice no cash/bill/date</th>
+                                <th scope="col">Qty of Dfls for writeoff</th>
+                                <th scope="col">Reason for Write-off</th>
+                                <th scope="col">Approval reference</th>
+                                <th scope="col">Qty dfls Approved for Write-off</th>
+                                <th scope="col"></th>
+                               
+                                
+                            </tr>
+                        </thead>
+                        <tbody style="overflow-x:auto;">
+                            {% for i in data %}
+                            <tr>
+                                <td>{{ i.lot_no }}</td>
+                                <td>{{ i.supplied_to }}</td>
+                                <td>{{ i.date_of_release }}</td>
+                                <td>{{ i.no_of_dfls_supplied }}</td>
+                                <td>{{ i.amount }}</td>
+                                <td>{{ i.invoice_no_cash_bill_date }}</td>
+                                <td>{{ i.qty_of_dfls_requested_for_write_off }}</td>
+                                <td>{{ i.reason_for_writeoff }}</td>
+                                <td>{{ i.approval_reference }}</td>
+                                <td>{{ i.qty_of_dfls_approved_for_writeoff }}</td>   
+                                <td><a href="{% url 'update6' i.lot_no %}" ><button type="button" style="width: 150px;" class="btn btn-info" 
+                                    data-toggle="modal" data-target="">
+                                    Update
+                                </button></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock body %}

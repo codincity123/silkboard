@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'module1/module1.css' %}">
+{% endblock links %}
+{% block title %}
+Details
+{% endblock title %}
+{% block body %}
+<div class="row m-3">
+    <div class="col-7">
+        <div class="h3"><h3 style="color: #6d8e91;">Seed Crop Performance</h3></div>
+    </div>
+    <div class="col">
+        <a href="{% url 'mod11' %}"><button type="button" style="width: 150px;" class="btn btn-info" data-toggle="modal"
+                data-target="">
+                Add data
+            </button></a>
+    </div>
+</div>
+<div class="p-4">
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">P1 Seed Lot No :{{ myfill.form.p1_seed_lot_no }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;"
+                        href="{% url 'moddata1' %}">Refresh</a></button></div>
+        </div>
+    </form>
+
+</div>
+
+<div class="row">
+    <div class="col ">
+        <div class="p-2">
+            <section class="container-fluid">
+                <section class="row justify-content-center">
+                    <table class="table table-striped table-responsive">
+                        <thead style="color:#6d8e91; background-color: #d9e3dd;">
+                            <tr>
+                                <th scope="col">Unit Name</th>
+                                <th scope="col">Name Of ASR</th>
+                                <th scope="col">Certificate No. Of ASR</th>
+                                <th scope="col">P1 Seed Lot No.</th>
+                                <th scope="col">P1 Race</th>
+                                <th scope="col">No. Of DFLs Brushed</th>
+                                <th scope="col">Date Of Hatching</th>
+                                <th scope="col">Date Of Spinning</th>
+                                <th scope="col">Hatching</th>
+                                <th scope="col"> Seed Crop Inspected By</th>
+                        
+
+                                <th scope="col">Seed Crop Remarks</th>
+                                <th scope="col">Date Of Cocoon Assesment</th>
+                                <th scope="col">Cocoon Yield Per 100 DFLS</th>
+                                <th scope="col">No. of Cocoon Per Kg</th>
+                                <th scope="col">No. Of Good Cocoon Per Kg</th>
+                                <th scope="col">No. Of Defective Cocoon Per Kg</th>
+                                <th scope="col">No. of Male Cocoon Per Kg</th>
+                                <th scope="col">No. of Female Cocoon Per Kg</th>
+                                <th scope="col">Pupation</th>
+                                <th scope="col">Fitness Of Seed Cocoon for Purchase</th>
+                                <th scope="col"></th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                            
+                                <td>{{ i.unit_name }}</td>
+                                <td>{{ i.Name_of_the_Adopted_Seed_Rearer }}</td>
+                                <td>{{ i.Reg_Certificate_No_of_ASR }}</td>
+                                <td>{{ i.p1_seed_lot_no }}</td>
+                                <td>{{ i.p1_race }}</td>
+                                <td>{{ i.no_of_dfls_brushed }}</td>
+                                <td>{{ i.date_of_hatching }}</td>
+                                <td>{{ i.date_of_spinning }}</td>
+                                <td>{{ i.hatching }}</td>
+                                <td>{{ i.seed_crop_inspected_by }}</td>
+                                <td>{{ i.seed_crop_remarks }}</td>
+                                <td>{{ i.date_of_cocoon_assesment }}</td>
+                                <td>{{ i.cocoon_yield_per_100dfls }}</td>
+                                <td>{{ i.no_of_cocoon_per_kg }}</td>
+                                <td>{{ i.no_of_good_cocoon_per_kg }}</td>
+                                <td>{{ i.no_of_defective_cocoon_per_kg }}</td>
+                                <td>{{ i.no_of_male_cocoon_per_kg }}</td>
+                                <td>{{ i.no_of_female_cocoon_per_kg }}</td>
+                                <td>{{ i.pupation }}</td>
+                                <td>{{ i.fitness_of_seed_cocoon_per_kg }}</td>
+                                <td><a href="{% url 'update1' i.p1_seed_lot_no %}"><button type="button"
+                                    style="width: 150px;" class="btn btn-info" data-toggle="modal"
+                                    data-target="">
+                                    Update
+                                </button></a></td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </section>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock body %}

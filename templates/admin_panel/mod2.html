@@ -1,0 +1,76 @@
+{% extends "admin_panel/admin_home.html" %}
+{% block body %}
+<div class="p-4">
+    <div class="col-7">
+        <div class="h3" style="color: #4c6f74;">Seed Cocoon Purchase</div><br>
+    </div>
+    <form action="" method="get">
+        <div class="form-row">
+            <div class="col">Unit Name : {{ myfill.form.unit_name }}</div>
+            <div class="col">Lot No :{{ myfill.form.SSPC_Lot_No_Assigned }}</div>
+            <div class="col">From : {{ myfill.form.start_date }}</div>
+            <div class="col">To : {{ myfill.form.end_date }}</div>
+        </div>
+        <div class="form-row pt-4">
+            <div class="col"><button class="btn btn-info" type="submit">Search</button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'mod2' %}">Refresh</a></button></div>
+            <div class="col"><button class="btn btn-secondary"><a style="color: #fff;" href="{% url 'export2' %}?{{request.GET.urlencode}}">Export ( .xls)</a></button></div>
+        </div>
+    </form>
+
+</div>
+<div class="ml-2 mr-2">
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <thead style="color:#6d8e91; background-color: #d9e3dd;">
+                <tr>
+                    <th scope="col">Seed Cocoon Purchased Or Received From</th>
+                    <th scope="col">Rgistration Certificate No.</th>
+                    <th scope="col">Date Of Seed Cocoon Procurement</th>
+                    <th scope="col">Actual No. Of Cocoon Per Kg</th>
+                    <th scope="col">Total Qty. Of Seed Cocoons Procured By Weight(kg)</th>
+                    <th scope="col">Total Qty. Of Seed Cocoons Procured By Number</th>
+                    <th scope="col">Pupation (%)</th>
+                    <th scope="col">Seed Cocoon Price Per Kg</th>
+                    <th scope="col">Total Amount paid to ASR Per Unit (RS)</th>
+                    <th scope="col"> Transaction ID</th>
+                    <th scope="col">SSPC Lot No. Assigned</th>
+                    <th scope="col">Seed Cocoon Diverted to Other Unit</th>
+                    <th scope="col">Actual Qty Of Seed Cocoons Diverted To Units (kg)</th>
+                    <th scope="col">Actual Qty Of Seed Cocoons Diverted To Units (No.)</th>
+                    <th scope="col">Actual Qty Of Seed Cocoons Used For Processing (Kg)</th>
+                    <th scope="col">Actual Qty Of Seed Cocoons Used For Processing (No.)</th>
+                    
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                
+                    <td>{{ i.Seed_Cocoons_Purchased_or_Received_From }}</td>
+                    <td>{{ i.Reg_Certificate_No }}</td>
+                    <td>{{ i.date_of_seed_cocoon_procurement }}</td>
+                    <td>{{ i.actual_no_of_cocoon_per_kg }}</td>
+                    <td>{{ i.Total_Qty_of_Seed_Cocoons_Procured_by_weight_kg }}</td>
+                    <td>{{ i.Total_Qty_of_Seed_Cocoons_Procured_by_number }}</td>
+                    <td>{{ i.pupation_perc }}</td>
+                    <td>{{ i.seed_cocoon_price_per_kg }}</td>
+                    <td>{{ i.Total_Amount_Paid_to_ASR_per_Unit_rs }}</td>
+                    <td>{{ i.Transaction_ID }}</td>
+                    <td>{{ i.SSPC_Lot_No_Assigned }}</td>
+                    <td>{{ i.Seed_Cocoons_Diverted_to_Other_Unit }}</td>
+                    <td>{{ i.Actual_Qty_of_Seed_Cocoons_Diverted_to_Units_kg }}</td>
+                    <td>{{ i.Actual_Qty_of_Seed_Cocoons_Diverted_to_Units_no }}</td>
+                    <td>{{ i.Actual_Qty_of_Seed_Cocoons_used_for_processing_kg }}</td>
+                    <td>{{ i.Actual_Qty_of_Seed_Cocoons_used_for_processing_no }}</td>
+                    <td><a href="{% url 'mod2delete' i.SSPC_Lot_No_Assigned %}" class="btn btn-danger">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock body %}

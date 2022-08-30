@@ -1,0 +1,20 @@
+{% extends "admin_panel/admin_home.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="p-4">
+	<section class="container-fluid">
+		<section class="row justify-content-center">
+			<section class="col-12 col-sm-6 col-md-4">
+				<h3 style="font-family: cursive;">Units Registration.</h3>
+                <form method="post">
+                    {% csrf_token %}
+					 <h5>updating</h5>
+                     {{ form|crispy }}
+
+					  <button type="submit" class="btn btn-primary btn-block btn1">Submit</button>
+					</form>
+			</section>
+		</section>
+	</section>
+</div>
+{% endblock body %}

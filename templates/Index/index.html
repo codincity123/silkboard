@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Home
+{% endblock title %}
+{% block body %}
+<div class="container-fluid p-0">
+    <!-- <div class="row">
+        
+        <div class="col-sm-6 banner-image">
+            <img src="{% static 'Index/worms.jpg' %}" class="img-fluid">
+        </div>
+    </div> -->
+   
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'images/1.jpg' %}" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/2.jpg' %}" alt="Second slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/3.jpg' %}" alt="Third slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'images/4.jpg' %}" alt="Third slide">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+        
+
+</div>
+
+<div class="container-fluid p-4">
+  <p style="text-align:justify;">National Silkworm Seed Organization (NSSO) is the largest and most wide spread institution under Central Silk Board, Ministry of Textiles, Govt. of India, with its Headquarters strategically located in the CSB Complex, BTM Layout, Madivala, Bangalore.
+
+    The organization plays a pivotal role in mulberry silkworm seed sector, as it is principally involved in maintenance and multiplication of authorized bivoltine and multivoltine breeds of silkworm at its Basic Seed Farms and production and distribution of high quality mulberry silkworm commercial hybrid dfls at its Silkworm Seed Production Centres – bivoltine hybrids to a large extent and a small quantity of multibivoltine hybrid dfls.  Implementation of the provisions of Central Silk Board (Amendment) Act, 2006  is another important activityof NSSO, apart from many other important allied activities.
+    <br><br>
+    
+    With over 340 strong specialized staff and 338 skilled auxiliary manpower on its roll, spread across 34 stations in nine states of India, NSSO has steadily grown over the years in terms of production and productivity and also distribution of silkworm seed with unmatched professional efficiency.<br><br>
+    
+    When established in the year 1975 as Central Bivoltine Project, the primary objective was to attract traditional Indian sericulturists to bivoltine sericulture, by educating them about the benefits of bivoltine sericulture. This project was subsequently renamed as National Silkworm Seed Project (NSSP).and was rechristened as National Silkworm Seed Organization (NSSO).
+    
+    Changing the mindset of the traditional serifarmers though a Herculean task, the hard work coupled with on-site demonstrations set the tone for the changing sericulture scenario in the country, with many challenging avenues in sericulture in India.
+    
+    Today, NSSO is synonymous with the highest quality of silkworm seed, be it basic or commercial dfls – the brand value of NSSO seed is growing stronger by the day.  In fact, all the seed production centres of NSSO are ISO 9001:2015 certified. We, at NSSO stand far beyond the silkworm seed……
+    
+    Thus, in more than four decades of its existence, NSSO established itself as an innovative and dynamic organization which actively seeks out new and better ways of accomplishing its multifaceted tasks. Accordingly, its legacy in the arena of large scale bivoltine commercial silkworm seed production is carried forward, making its growth in this sphere absolutely phenomenal.</p>
+</div>
+
+    
+{% endblock body %}
